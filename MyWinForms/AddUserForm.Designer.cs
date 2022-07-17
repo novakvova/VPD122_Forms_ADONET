@@ -70,7 +70,7 @@
             this.txtEmail.Location = new System.Drawing.Point(17, 135);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(318, 34);
-            this.txtEmail.TabIndex = 1;
+            this.txtEmail.TabIndex = 2;
             // 
             // label3
             // 
@@ -86,14 +86,14 @@
             this.txtPhone.Location = new System.Drawing.Point(17, 223);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(318, 34);
-            this.txtPhone.TabIndex = 1;
+            this.txtPhone.TabIndex = 3;
             // 
             // btnAdd
             // 
             this.btnAdd.Location = new System.Drawing.Point(649, 23);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(129, 60);
-            this.btnAdd.TabIndex = 2;
+            this.btnAdd.TabIndex = 4;
             this.btnAdd.Text = "Додати";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -103,7 +103,7 @@
             this.btnCancel.Location = new System.Drawing.Point(649, 95);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(129, 60);
-            this.btnCancel.TabIndex = 3;
+            this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "Скасувати";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
