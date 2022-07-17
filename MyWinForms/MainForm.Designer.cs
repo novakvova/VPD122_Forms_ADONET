@@ -30,11 +30,12 @@
         {
             this.btnSearch = new System.Windows.Forms.Button();
             this.dgvUsers = new System.Windows.Forms.DataGridView();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.UserIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserImageCol = new System.Windows.Forms.DataGridViewImageColumn();
             this.UserNameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserEmailCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserPhoneCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,6 +54,7 @@
             this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.UserIdCol,
+            this.UserImageCol,
             this.UserNameCol,
             this.UserEmailCol,
             this.UserPhoneCol});
@@ -63,6 +65,16 @@
             this.dgvUsers.Size = new System.Drawing.Size(863, 348);
             this.dgvUsers.TabIndex = 1;
             // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(26, 12);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(117, 44);
+            this.btnAdd.TabIndex = 2;
+            this.btnAdd.Text = "Додати";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
             // UserIdCol
             // 
             this.UserIdCol.HeaderText = "Id";
@@ -70,6 +82,12 @@
             this.UserIdCol.Name = "UserIdCol";
             this.UserIdCol.Visible = false;
             this.UserIdCol.Width = 125;
+            // 
+            // UserImageCol
+            // 
+            this.UserImageCol.HeaderText = "Фото";
+            this.UserImageCol.MinimumWidth = 6;
+            this.UserImageCol.Name = "UserImageCol";
             // 
             // UserNameCol
             // 
@@ -92,16 +110,6 @@
             this.UserPhoneCol.Name = "UserPhoneCol";
             this.UserPhoneCol.Width = 150;
             // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(26, 12);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(117, 44);
-            this.btnAdd.TabIndex = 2;
-            this.btnAdd.Text = "Додати";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -121,10 +129,11 @@
 
         private Button btnSearch;
         private DataGridView dgvUsers;
+        private Button btnAdd;
         private DataGridViewTextBoxColumn UserIdCol;
+        private DataGridViewImageColumn UserImageCol;
         private DataGridViewTextBoxColumn UserNameCol;
         private DataGridViewTextBoxColumn UserEmailCol;
         private DataGridViewTextBoxColumn UserPhoneCol;
-        private Button btnAdd;
     }
 }

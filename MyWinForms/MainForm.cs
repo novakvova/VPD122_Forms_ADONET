@@ -17,7 +17,8 @@ namespace MyWinForms
             AddUserForm dlg = new AddUserForm();
             if(dlg.ShowDialog()==DialogResult.OK)
             {
-                object[] row = { 1, dlg.Pib, dlg.Email, dlg.Phone };
+                object[] row = { 1, Image.FromFile(dlg.ImagePhoto), 
+                    dlg.Pib, dlg.Email, dlg.Phone };
                 dgvUsers.Rows.Add(row);
             }
         }
