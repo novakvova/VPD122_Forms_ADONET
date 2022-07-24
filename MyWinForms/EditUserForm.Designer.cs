@@ -1,6 +1,6 @@
 ﻿namespace MyWinForms
 {
-    partial class AddUserForm
+    partial class EditUserForm
     {
         /// <summary>
         /// Required designer variable.
@@ -94,7 +94,7 @@
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(129, 60);
             this.btnAdd.TabIndex = 4;
-            this.btnAdd.Text = "Додати";
+            this.btnAdd.Text = "Змінити";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -118,7 +118,7 @@
             this.pbImage.TabStop = false;
             this.pbImage.Click += new System.EventHandler(this.pbImage_Click);
             // 
-            // AddUserForm
+            // EditUserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -134,9 +134,9 @@
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "AddUserForm";
+            this.Name = "EditUserForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Додати";
+            this.Text = "Змінити";
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
