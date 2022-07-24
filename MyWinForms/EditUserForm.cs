@@ -19,7 +19,7 @@ namespace MyWinForms
         public EditUserForm()
         {
             InitializeComponent();
-            pbImage.Image = Image.FromFile("select.jfif");
+            
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -45,6 +45,14 @@ namespace MyWinForms
                 ImagePhoto=dlg.FileName;
                 //MessageBox.Show("Select image " + dlg.FileName);
             }
+        }
+
+        private void EditUserForm_Load(object sender, EventArgs e)
+        {
+            pbImage.Image = Image.FromFile(ImagePhoto);
+            txtName.Text = Pib;
+            txtEmail.Text=Email;
+            txtPhone.Text= Phone;
         }
     }
 }

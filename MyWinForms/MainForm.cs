@@ -38,7 +38,7 @@ namespace MyWinForms
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            
+            LoadList();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -97,7 +97,34 @@ namespace MyWinForms
                     }
                     var index = dgvUsers.SelectedCells[0].RowIndex;
                     int id = (int)dgvUsers.Rows[index].Cells[0].Value;
-                    MessageBox.Show("id = " + id);
+                    var user = _context.Users.SingleOrDefault(x=>x.Id==id);
+                    if (user != null)
+                    {
+                        string userImage = Path.Combine("images", user.Photo);
+                        EditUserForm dlg = new EditUserForm();
+                        dlg.Pib=user.Name;
+                        dlg.ImagePhoto = userImage;
+                        dlg.Email = user.Email;
+                        dlg.Phone = user.Phone;
+                        if (dlg.ShowDialog() == DialogResult.OK)
+                        {
+                            if (dlg.ImagePhoto != userImage) //Заміняємо старе фото
+                            {
+                                Bitmap bitmap = new Bitmap(dlg.ImagePhoto);
+                                string imageName = Path.GetRandomFileName() + ".jpg";
+                                bitmap.Save(Path.Combine("images", imageName), ImageFormat.Jpeg);
+                                user.Photo = imageName;
+                            }
+                            user.Email = dlg.Email;
+                            user.Phone = dlg.Phone;
+                            user.Name=dlg.Pib;
+                            //_context.Users.Update(user);
+                            _context.SaveChanges();
+                            LoadList();
+                        }
+                    }
+
+                    //MessageBox.Show("id = " + id);
                 }
             }
             else

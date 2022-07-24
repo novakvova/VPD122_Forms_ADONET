@@ -137,6 +137,7 @@
             this.Name = "EditUserForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Змінити";
+            this.Load += new System.EventHandler(this.EditUserForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
