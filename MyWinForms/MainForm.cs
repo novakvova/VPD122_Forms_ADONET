@@ -131,29 +131,6 @@ namespace MyWinForms
             {
                 MessageBox.Show("Оберіть рядок, який треба міняти");
             }
-            //EditUserForm dlg = new EditUserForm();
-
-            //if (dlg.ShowDialog() == DialogResult.OK)
-            //{
-                //string dir = "images";
-                //if (!Directory.Exists(dir))
-                //    Directory.CreateDirectory(dir);
-                //Bitmap bitmap = new Bitmap(dlg.ImagePhoto);
-                //string imageName = Path.GetRandomFileName() + ".jpg";
-                //bitmap.Save(Path.Combine(dir, imageName), ImageFormat.Jpeg);
-                //AppUser user = new AppUser()
-                //{
-                //    Name = dlg.Pib,
-                //    Phone = dlg.Phone,
-                //    Email = dlg.Email,
-                //    Photo = imageName
-                //};
-                //_context.Users.Add(user);
-                //_context.SaveChanges();
-                //LoadList();
-
-
-            //}
         }
     }
 }
