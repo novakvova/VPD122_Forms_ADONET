@@ -11,7 +11,7 @@ namespace MyWinForms.Data
     {
         public AppEFContext()
         {
-            this.Database.EnsureCreated();
+            //this.Database.EnsureCreated();
         }
 
         public DbSet<AppUser> Users { get; set; }
