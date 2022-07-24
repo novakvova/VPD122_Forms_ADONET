@@ -15,6 +15,8 @@ namespace MyWinForms.Data
         }
 
         public DbSet<AppUser> Users { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<City> Cities { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyWinForms.Data;
 
@@ -10,9 +11,10 @@ using MyWinForms.Data;
 namespace MyWinForms.Migrations
 {
     [DbContext(typeof(AppEFContext))]
-    partial class AppEFContextModelSnapshot : ModelSnapshot
+    [Migration("20220724141921_AddTable_tblCountries")]
+    partial class AddTable_tblCountries
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,29 +53,6 @@ namespace MyWinForms.Migrations
                     b.ToTable("tblUsers");
                 });
 
-            modelBuilder.Entity("MyWinForms.Data.City", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("CountryId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CountryId");
-
-                    b.ToTable("tblCities");
-                });
-
             modelBuilder.Entity("MyWinForms.Data.Country", b =>
                 {
                     b.Property<int>("Id")
@@ -94,22 +73,6 @@ namespace MyWinForms.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("tblCountries");
-                });
-
-            modelBuilder.Entity("MyWinForms.Data.City", b =>
-                {
-                    b.HasOne("MyWinForms.Data.Country", "Country")
-                        .WithMany("Cities")
-                        .HasForeignKey("CountryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Country");
-                });
-
-            modelBuilder.Entity("MyWinForms.Data.Country", b =>
-                {
-                    b.Navigation("Cities");
                 });
 #pragma warning restore 612, 618
         }
