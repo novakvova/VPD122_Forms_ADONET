@@ -23,11 +23,15 @@ namespace MyWinForms
         private void LoadList()
         {
             tvCategory.Nodes.Clear();
+            tvCategory.ImageList = new ImageList();
             foreach (var c in myContext.Categories
                 .Where(x => x.ParentId == null).ToList())
             {
+                tvCategory.ImageList.Images.Add(c.Id.ToString(), Image.FromFile($@"images\{c.Image}"));
                 TreeNode node = new TreeNode(c.Title);
                 node.Tag = c;
+                node.ImageKey=c.Id.ToString();
+                node.SelectedImageKey = c.Id.ToString();
                 node.Nodes.Add("");
                 tvCategory.Nodes.Add(node);
             }
