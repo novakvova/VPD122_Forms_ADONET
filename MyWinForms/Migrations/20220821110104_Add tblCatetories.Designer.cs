@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyWinForms.Data;
 
@@ -11,9 +12,10 @@ using MyWinForms.Data;
 namespace MyWinForms.Migrations
 {
     [DbContext(typeof(AppEFContext))]
-    partial class AppEFContextModelSnapshot : ModelSnapshot
+    [Migration("20220821110104_Add tblCatetories")]
+    partial class AddtblCatetories
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -66,9 +68,6 @@ namespace MyWinForms.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("ParentId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Priority")
                         .HasColumnType("int");
 
@@ -78,8 +77,6 @@ namespace MyWinForms.Migrations
                         .HasColumnType("nvarchar(255)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ParentId");
 
                     b.ToTable("tblCategories");
                 });
@@ -127,15 +124,6 @@ namespace MyWinForms.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("tblCountries");
-                });
-
-            modelBuilder.Entity("MyWinForms.Data.Category", b =>
-                {
-                    b.HasOne("MyWinForms.Data.Category", "Parent")
-                        .WithMany()
-                        .HasForeignKey("ParentId");
-
-                    b.Navigation("Parent");
                 });
 
             modelBuilder.Entity("MyWinForms.Data.City", b =>
