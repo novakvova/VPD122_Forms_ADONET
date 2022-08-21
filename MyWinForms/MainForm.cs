@@ -132,5 +132,11 @@ namespace MyWinForms
                 MessageBox.Show("Оберіть рядок, який треба міняти");
             }
         }
+
+        private void btnCategory_Click(object sender, EventArgs e)
+        {
+            CategoryForm dlg = new CategoryForm();
+            dlg.ShowDialog();
+        }
     }
 }

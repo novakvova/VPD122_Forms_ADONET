@@ -40,15 +40,16 @@
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrev = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
+            this.btnCategory = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(810, 9);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSearch.Location = new System.Drawing.Point(926, 12);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(103, 33);
+            this.btnSearch.Size = new System.Drawing.Size(118, 44);
             this.btnSearch.TabIndex = 0;
             this.btnSearch.Text = "Пошук";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -67,13 +68,13 @@
             this.UserNameCol,
             this.UserEmailCol,
             this.UserPhoneCol});
-            this.dgvUsers.Location = new System.Drawing.Point(23, 91);
-            this.dgvUsers.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvUsers.Location = new System.Drawing.Point(26, 121);
+            this.dgvUsers.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dgvUsers.Name = "dgvUsers";
             this.dgvUsers.ReadOnly = true;
             this.dgvUsers.RowHeadersWidth = 51;
             this.dgvUsers.RowTemplate.Height = 100;
-            this.dgvUsers.Size = new System.Drawing.Size(890, 261);
+            this.dgvUsers.Size = new System.Drawing.Size(1017, 348);
             this.dgvUsers.TabIndex = 1;
             // 
             // UserIdCol
@@ -119,10 +120,10 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(23, 9);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAdd.Location = new System.Drawing.Point(26, 12);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(103, 33);
+            this.btnAdd.Size = new System.Drawing.Size(118, 44);
             this.btnAdd.TabIndex = 2;
             this.btnAdd.Text = "Додати";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -130,10 +131,10 @@
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(863, 355);
+            this.btnNext.Location = new System.Drawing.Point(986, 473);
             this.btnNext.Margin = new System.Windows.Forms.Padding(1);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(50, 27);
+            this.btnNext.Size = new System.Drawing.Size(57, 36);
             this.btnNext.TabIndex = 3;
             this.btnNext.Text = ">>";
             this.btnNext.UseVisualStyleBackColor = true;
@@ -141,10 +142,10 @@
             // 
             // btnPrev
             // 
-            this.btnPrev.Location = new System.Drawing.Point(810, 355);
+            this.btnPrev.Location = new System.Drawing.Point(926, 473);
             this.btnPrev.Margin = new System.Windows.Forms.Padding(1);
             this.btnPrev.Name = "btnPrev";
-            this.btnPrev.Size = new System.Drawing.Size(50, 27);
+            this.btnPrev.Size = new System.Drawing.Size(57, 36);
             this.btnPrev.TabIndex = 4;
             this.btnPrev.Text = "<<";
             this.btnPrev.UseVisualStyleBackColor = true;
@@ -152,27 +153,38 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(23, 46);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEdit.Location = new System.Drawing.Point(26, 61);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(103, 33);
+            this.btnEdit.Size = new System.Drawing.Size(118, 44);
             this.btnEdit.TabIndex = 5;
             this.btnEdit.Text = "Змінити";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
+            // btnCategory
+            // 
+            this.btnCategory.Location = new System.Drawing.Point(33, 480);
+            this.btnCategory.Name = "btnCategory";
+            this.btnCategory.Size = new System.Drawing.Size(111, 40);
+            this.btnCategory.TabIndex = 6;
+            this.btnCategory.Text = "Категорії";
+            this.btnCategory.UseVisualStyleBackColor = true;
+            this.btnCategory.Click += new System.EventHandler(this.btnCategory_Click);
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(931, 399);
+            this.ClientSize = new System.Drawing.Size(1064, 532);
+            this.Controls.Add(this.btnCategory);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnPrev);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.dgvUsers);
             this.Controls.Add(this.btnSearch);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "MainForm";
             this.Text = "Головне вікно";
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
@@ -193,5 +205,6 @@
         private DataGridViewTextBoxColumn UserEmailCol;
         private DataGridViewTextBoxColumn UserPhoneCol;
         private Button btnEdit;
+        private Button btnCategory;
     }
 }

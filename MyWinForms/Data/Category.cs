@@ -17,6 +17,8 @@ namespace MyWinForms.Data
         public DateTime DateCreated { get; set; }
         [Required, StringLength(255)]
         public string Title { get; set; }
+        [StringLength(200)]
+        public string Image { get; set; }
         public int Priority { get; set; }
 
         [ForeignKey("Parent")]
