@@ -36,6 +36,7 @@
             this.txtPrioritet = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.pbImage = new System.Windows.Forms.PictureBox();
+            this.cbIsSubCategory = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,6 +47,8 @@
             this.tvCategory.Name = "tvCategory";
             this.tvCategory.Size = new System.Drawing.Size(450, 484);
             this.tvCategory.TabIndex = 0;
+            this.tvCategory.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvCategory_AfterSelect);
+            this.tvCategory.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvCategory_NodeMouseClick);
             // 
             // btnAddCategory
             // 
@@ -113,11 +116,23 @@
             this.pbImage.TabStop = false;
             this.pbImage.Click += new System.EventHandler(this.pbImage_Click);
             // 
+            // cbIsSubCategory
+            // 
+            this.cbIsSubCategory.AutoSize = true;
+            this.cbIsSubCategory.Location = new System.Drawing.Point(512, 392);
+            this.cbIsSubCategory.Name = "cbIsSubCategory";
+            this.cbIsSubCategory.Size = new System.Drawing.Size(149, 32);
+            this.cbIsSubCategory.TabIndex = 6;
+            this.cbIsSubCategory.Text = "ПІдкатегорія";
+            this.cbIsSubCategory.UseVisualStyleBackColor = true;
+            this.cbIsSubCategory.CheckedChanged += new System.EventHandler(this.cbIsSubCategory_CheckedChanged);
+            // 
             // CategoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1202, 517);
+            this.Controls.Add(this.cbIsSubCategory);
             this.Controls.Add(this.pbImage);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtPrioritet);
@@ -148,5 +163,6 @@
         private TextBox txtPrioritet;
         private Label label3;
         private PictureBox pbImage;
+        private CheckBox cbIsSubCategory;
     }
 }
