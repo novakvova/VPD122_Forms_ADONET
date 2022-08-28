@@ -36,4 +36,8 @@
     <Folder Include="images\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BeginApp\BeginApp.csproj" />
+  </ItemGroup>
+
 </Project>

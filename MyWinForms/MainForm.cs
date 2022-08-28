@@ -1,3 +1,5 @@
+using BeginApp.Abstracts;
+using BeginApp.Services;
 using MyWinForms.Data;
 using System.Drawing.Imaging;
 
@@ -137,6 +139,33 @@ namespace MyWinForms
         {
             CategoryForm dlg = new CategoryForm();
             dlg.ShowDialog();
+        }
+
+        private void btnSend_Click(object sender, EventArgs e)
+        {
+            //SendEmail();
+            SMSService sMS = new SMSService();
+            sMS.Send(txtPhone.Text,txtMessage.Text);
+        }
+        private void SendEmail()
+        {
+            try
+            {
+                BeginApp.Message message = new BeginApp.Message();
+                message.Body = "Привіт <b>козак</b>!";
+                message.Subject = "Мені уже 18 :)";
+                message.To = "smarthl2rp@ukr.net";
+
+                IEmailService emailService = new SmtpEmailService();
+                emailService.Send(message);
+                //string data = sender.ReadEmailDataPop3();
+                //Console.WriteLine(data);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Problem send", ex.Message);
+            }
         }
     }
 }

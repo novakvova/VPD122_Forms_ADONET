@@ -41,7 +41,14 @@
             this.btnPrev = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnCategory = new System.Windows.Forms.Button();
+            this.btnSend = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtMessage = new System.Windows.Forms.RichTextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtPhone = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSearch
@@ -68,7 +75,7 @@
             this.UserNameCol,
             this.UserEmailCol,
             this.UserPhoneCol});
-            this.dgvUsers.Location = new System.Drawing.Point(26, 121);
+            this.dgvUsers.Location = new System.Drawing.Point(34, 259);
             this.dgvUsers.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dgvUsers.Name = "dgvUsers";
             this.dgvUsers.ReadOnly = true;
@@ -131,7 +138,7 @@
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(986, 473);
+            this.btnNext.Location = new System.Drawing.Point(986, 606);
             this.btnNext.Margin = new System.Windows.Forms.Padding(1);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(57, 36);
@@ -142,7 +149,7 @@
             // 
             // btnPrev
             // 
-            this.btnPrev.Location = new System.Drawing.Point(926, 473);
+            this.btnPrev.Location = new System.Drawing.Point(926, 606);
             this.btnPrev.Margin = new System.Windows.Forms.Padding(1);
             this.btnPrev.Name = "btnPrev";
             this.btnPrev.Size = new System.Drawing.Size(57, 36);
@@ -164,7 +171,7 @@
             // 
             // btnCategory
             // 
-            this.btnCategory.Location = new System.Drawing.Point(33, 480);
+            this.btnCategory.Location = new System.Drawing.Point(33, 613);
             this.btnCategory.Name = "btnCategory";
             this.btnCategory.Size = new System.Drawing.Size(111, 40);
             this.btnCategory.TabIndex = 6;
@@ -172,11 +179,75 @@
             this.btnCategory.UseVisualStyleBackColor = true;
             this.btnCategory.Click += new System.EventHandler(this.btnCategory_Click);
             // 
+            // btnSend
+            // 
+            this.btnSend.Location = new System.Drawing.Point(396, 26);
+            this.btnSend.Name = "btnSend";
+            this.btnSend.Size = new System.Drawing.Size(120, 44);
+            this.btnSend.TabIndex = 7;
+            this.btnSend.Text = "Надіслати";
+            this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtMessage);
+            this.groupBox1.Controls.Add(this.btnSend);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.txtPhone);
+            this.groupBox1.Location = new System.Drawing.Point(219, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(542, 241);
+            this.groupBox1.TabIndex = 8;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Відправити смс";
+            // 
+            // txtMessage
+            // 
+            this.txtMessage.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtMessage.Location = new System.Drawing.Point(16, 145);
+            this.txtMessage.Name = "txtMessage";
+            this.txtMessage.Size = new System.Drawing.Size(384, 72);
+            this.txtMessage.TabIndex = 3;
+            this.txtMessage.Text = "";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.Color.Blue;
+            this.label2.Location = new System.Drawing.Point(16, 114);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(146, 28);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Повідомлення";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.Blue;
+            this.label1.Location = new System.Drawing.Point(16, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(91, 28);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Телефон";
+            // 
+            // txtPhone
+            // 
+            this.txtPhone.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtPhone.Location = new System.Drawing.Point(16, 65);
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(301, 34);
+            this.txtPhone.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1064, 532);
+            this.ClientSize = new System.Drawing.Size(1214, 677);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCategory);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnPrev);
@@ -188,6 +259,8 @@
             this.Name = "MainForm";
             this.Text = "Головне вікно";
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -206,5 +279,11 @@
         private DataGridViewTextBoxColumn UserPhoneCol;
         private Button btnEdit;
         private Button btnCategory;
+        private Button btnSend;
+        private GroupBox groupBox1;
+        private RichTextBox txtMessage;
+        private Label label2;
+        private Label label1;
+        private TextBox txtPhone;
     }
 }
