@@ -160,6 +160,7 @@ namespace MyWinForms
                     tvCategory.ImageList.Images.Add(c.Id.ToString(), Image.FromFile($"images\\32_{c.Image}"));
                     node.ImageKey = c.Id.ToString();
                     node.SelectedImageKey = c.Id.ToString();
+                    node.Nodes.Add("");
                     node.Tag = c;
                     e.Node.Nodes.Add(node);
                 }
