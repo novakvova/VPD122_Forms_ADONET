@@ -20,6 +20,10 @@ namespace BeginApp
         /// Кому відправляти листа
         /// </summary>
         public string To { get; set; }
+        /// <summary>
+        /// Файл для відправки
+        /// </summary>
+        public string FilePath { get; set; }
 
     }
 }

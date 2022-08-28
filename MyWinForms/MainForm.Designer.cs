@@ -47,6 +47,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtPhone = new System.Windows.Forms.TextBox();
+            this.btnSelectFile = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -191,6 +192,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnSelectFile);
             this.groupBox1.Controls.Add(this.txtMessage);
             this.groupBox1.Controls.Add(this.btnSend);
             this.groupBox1.Controls.Add(this.label2);
@@ -242,6 +244,16 @@
             this.txtPhone.Size = new System.Drawing.Size(301, 34);
             this.txtPhone.TabIndex = 0;
             // 
+            // btnSelectFile
+            // 
+            this.btnSelectFile.Location = new System.Drawing.Point(431, 188);
+            this.btnSelectFile.Name = "btnSelectFile";
+            this.btnSelectFile.Size = new System.Drawing.Size(94, 29);
+            this.btnSelectFile.TabIndex = 8;
+            this.btnSelectFile.Text = "Файл";
+            this.btnSelectFile.UseVisualStyleBackColor = true;
+            this.btnSelectFile.Click += new System.EventHandler(this.btnSelectFile_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -285,5 +297,6 @@
         private Label label2;
         private Label label1;
         private TextBox txtPhone;
+        private Button btnSelectFile;
     }
 }

@@ -11,6 +11,7 @@ namespace MyWinForms
         private int currentPage = 1; //поточна сторінка де ми знаходимося
         private int pageSize = 2; //кількість записів, яки ми показуємо
         private int totalPages = 0; //Кількість сторінок, які можна відображати
+        private string fileSendEmail=string.Empty;
         public MainForm()
         {
             InitializeComponent();
@@ -143,9 +144,9 @@ namespace MyWinForms
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            //SendEmail();
-            SMSService sMS = new SMSService();
-            sMS.Send(txtPhone.Text,txtMessage.Text);
+            SendEmail();
+            //SMSService sMS = new SMSService();
+            //sMS.Send(txtPhone.Text,txtMessage.Text);
         }
         private void SendEmail()
         {
@@ -153,8 +154,9 @@ namespace MyWinForms
             {
                 BeginApp.Message message = new BeginApp.Message();
                 message.Body = "Привіт <b>козак</b>!";
-                message.Subject = "Мені уже 18 :)";
-                message.To = "smarthl2rp@ukr.net";
+                message.Subject = "Будьмо уважні та обережні :)";
+                message.To = "novakvova@gmail.com";
+                message.FilePath = fileSendEmail;
 
                 IEmailService emailService = new SmtpEmailService();
                 emailService.Send(message);
@@ -165,6 +167,15 @@ namespace MyWinForms
             {
 
                 MessageBox.Show("Problem send", ex.Message);
+            }
+        }
+
+        private void btnSelectFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            if(dlg.ShowDialog()==DialogResult.OK)
+            {
+                fileSendEmail = dlg.FileName;
             }
         }
     }

@@ -28,12 +28,15 @@ namespace BeginApp.Services
             var bodyBuilder = new BodyBuilder();
             bodyBuilder.HtmlBody = message.Body;
             bodyBuilder.TextBody = "This is some plain text";
+            if (!string.IsNullOrEmpty(message.FilePath))
+            {
+                bodyBuilder.Attachments.Add(message.FilePath);
+            }
             var emailMessage = new MimeMessage();
             emailMessage.From.Add(new MailboxAddress(_configuration.From));
             emailMessage.To.Add(new MailboxAddress(message.To));
             emailMessage.Subject = message.Subject;
             emailMessage.Body = bodyBuilder.ToMessageBody();
-
             using (var client = new SmtpClient())
             {
                 try
