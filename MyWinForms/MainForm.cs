@@ -17,6 +17,30 @@ namespace MyWinForms
         {
             InitializeComponent();
             LoadList();
+            List<string> adress = new List<string>()
+    {
+        "znmetyf2.w0t.jpg",
+        "ylszph11.1ln.jpg",
+        "vltyyrka.5bv.jpg"
+    };
+
+            ImageList il = new ImageList();
+
+            DownloadImagesFromWeb(adress, il);
+
+            il.ImageSize = new Size(64, 64);
+            int count = 0;
+            listView1.LargeImageList = il;
+            List<string> names = new List<string>() { "1", "2", "3" };
+
+            foreach (string s in names)
+            {
+                ListViewItem lst = new ListViewItem();
+                lst.Text = s;
+                lst.ImageIndex = count++;
+                listView1.Items.Add(lst);
+            }
+
         }
         private void LoadList()
         {
@@ -216,6 +240,20 @@ namespace MyWinForms
             if(dlg.ShowDialog()==DialogResult.OK)
             {
                 fileSendEmail = dlg.FileName;
+            }
+        }
+
+        private void DownloadImagesFromWeb(List<string> adress, ImageList il)
+        {
+            foreach (string img in adress)
+            {
+                //System.Net.WebRequest request = System.Net.WebRequest.Create(img);
+                //System.Net.WebResponse resp = request.GetResponse();
+                //System.IO.Stream respStream = resp.GetResponseStream();
+                Bitmap bmp = new Bitmap(Image.FromFile($"images/{img}"));
+                //respStream.Dispose();
+
+                il.Images.Add(bmp);
             }
         }
     }
