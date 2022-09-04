@@ -8,19 +8,13 @@ using System.Threading.Tasks;
 
 namespace MyWinForms.Data
 {
-    [Table("tblUsers")]
-    public class AppUser
+    [Table("tblRoles")]
+    public class AppRole
     {
         [Key]
         public int Id { get; set; }
-        [Required, StringLength(200)]
+        [Required, StringLength(255)]
         public string Name { get; set; }
-        [StringLength(100)]
-        public string Email { get; set; }
-        [StringLength(100)]
-        public string Phone { get; set; }
-        [StringLength(100)]
-        public string Photo { get; set; }
         public virtual IList<AppUserRole> AppUserRoles { get; set; }
     }
 }
