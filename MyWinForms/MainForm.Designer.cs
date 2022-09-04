@@ -31,11 +31,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSearch = new System.Windows.Forms.Button();
             this.dgvUsers = new System.Windows.Forms.DataGridView();
-            this.UserIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UserImageCol = new System.Windows.Forms.DataGridViewImageColumn();
-            this.UserNameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UserEmailCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UserPhoneCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrev = new System.Windows.Forms.Button();
@@ -43,11 +38,17 @@
             this.btnCategory = new System.Windows.Forms.Button();
             this.btnSend = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnSelectFile = new System.Windows.Forms.Button();
             this.txtMessage = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtPhone = new System.Windows.Forms.TextBox();
-            this.btnSelectFile = new System.Windows.Forms.Button();
+            this.UserIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserImageCol = new System.Windows.Forms.DataGridViewImageColumn();
+            this.UserNameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColRoles = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserEmailCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserPhoneCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -74,6 +75,7 @@
             this.UserIdCol,
             this.UserImageCol,
             this.UserNameCol,
+            this.ColRoles,
             this.UserEmailCol,
             this.UserPhoneCol});
             this.dgvUsers.Location = new System.Drawing.Point(34, 259);
@@ -82,49 +84,8 @@
             this.dgvUsers.ReadOnly = true;
             this.dgvUsers.RowHeadersWidth = 51;
             this.dgvUsers.RowTemplate.Height = 100;
-            this.dgvUsers.Size = new System.Drawing.Size(1017, 348);
+            this.dgvUsers.Size = new System.Drawing.Size(1193, 348);
             this.dgvUsers.TabIndex = 1;
-            // 
-            // UserIdCol
-            // 
-            this.UserIdCol.HeaderText = "Id";
-            this.UserIdCol.MinimumWidth = 6;
-            this.UserIdCol.Name = "UserIdCol";
-            this.UserIdCol.ReadOnly = true;
-            this.UserIdCol.Visible = false;
-            this.UserIdCol.Width = 125;
-            // 
-            // UserImageCol
-            // 
-            this.UserImageCol.HeaderText = "Фото";
-            this.UserImageCol.MinimumWidth = 6;
-            this.UserImageCol.Name = "UserImageCol";
-            this.UserImageCol.ReadOnly = true;
-            this.UserImageCol.Width = 150;
-            // 
-            // UserNameCol
-            // 
-            this.UserNameCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.UserNameCol.HeaderText = "ПІБ";
-            this.UserNameCol.MinimumWidth = 6;
-            this.UserNameCol.Name = "UserNameCol";
-            this.UserNameCol.ReadOnly = true;
-            // 
-            // UserEmailCol
-            // 
-            this.UserEmailCol.HeaderText = "Пошта";
-            this.UserEmailCol.MinimumWidth = 6;
-            this.UserEmailCol.Name = "UserEmailCol";
-            this.UserEmailCol.ReadOnly = true;
-            this.UserEmailCol.Width = 150;
-            // 
-            // UserPhoneCol
-            // 
-            this.UserPhoneCol.HeaderText = "Телефон";
-            this.UserPhoneCol.MinimumWidth = 6;
-            this.UserPhoneCol.Name = "UserPhoneCol";
-            this.UserPhoneCol.ReadOnly = true;
-            this.UserPhoneCol.Width = 150;
             // 
             // btnAdd
             // 
@@ -139,7 +100,7 @@
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(986, 606);
+            this.btnNext.Location = new System.Drawing.Point(1161, 615);
             this.btnNext.Margin = new System.Windows.Forms.Padding(1);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(57, 36);
@@ -150,7 +111,7 @@
             // 
             // btnPrev
             // 
-            this.btnPrev.Location = new System.Drawing.Point(926, 606);
+            this.btnPrev.Location = new System.Drawing.Point(1101, 615);
             this.btnPrev.Margin = new System.Windows.Forms.Padding(1);
             this.btnPrev.Name = "btnPrev";
             this.btnPrev.Size = new System.Drawing.Size(57, 36);
@@ -205,6 +166,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Відправити смс";
             // 
+            // btnSelectFile
+            // 
+            this.btnSelectFile.Location = new System.Drawing.Point(431, 188);
+            this.btnSelectFile.Name = "btnSelectFile";
+            this.btnSelectFile.Size = new System.Drawing.Size(94, 29);
+            this.btnSelectFile.TabIndex = 8;
+            this.btnSelectFile.Text = "Файл";
+            this.btnSelectFile.UseVisualStyleBackColor = true;
+            this.btnSelectFile.Click += new System.EventHandler(this.btnSelectFile_Click);
+            // 
             // txtMessage
             // 
             this.txtMessage.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -244,21 +215,60 @@
             this.txtPhone.Size = new System.Drawing.Size(301, 34);
             this.txtPhone.TabIndex = 0;
             // 
-            // btnSelectFile
+            // UserIdCol
             // 
-            this.btnSelectFile.Location = new System.Drawing.Point(431, 188);
-            this.btnSelectFile.Name = "btnSelectFile";
-            this.btnSelectFile.Size = new System.Drawing.Size(94, 29);
-            this.btnSelectFile.TabIndex = 8;
-            this.btnSelectFile.Text = "Файл";
-            this.btnSelectFile.UseVisualStyleBackColor = true;
-            this.btnSelectFile.Click += new System.EventHandler(this.btnSelectFile_Click);
+            this.UserIdCol.HeaderText = "Id";
+            this.UserIdCol.MinimumWidth = 6;
+            this.UserIdCol.Name = "UserIdCol";
+            this.UserIdCol.ReadOnly = true;
+            this.UserIdCol.Visible = false;
+            this.UserIdCol.Width = 125;
+            // 
+            // UserImageCol
+            // 
+            this.UserImageCol.HeaderText = "Фото";
+            this.UserImageCol.MinimumWidth = 6;
+            this.UserImageCol.Name = "UserImageCol";
+            this.UserImageCol.ReadOnly = true;
+            this.UserImageCol.Width = 150;
+            // 
+            // UserNameCol
+            // 
+            this.UserNameCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.UserNameCol.HeaderText = "ПІБ";
+            this.UserNameCol.MinimumWidth = 6;
+            this.UserNameCol.Name = "UserNameCol";
+            this.UserNameCol.ReadOnly = true;
+            // 
+            // ColRoles
+            // 
+            this.ColRoles.HeaderText = "Ролі";
+            this.ColRoles.MinimumWidth = 6;
+            this.ColRoles.Name = "ColRoles";
+            this.ColRoles.ReadOnly = true;
+            this.ColRoles.Width = 200;
+            // 
+            // UserEmailCol
+            // 
+            this.UserEmailCol.HeaderText = "Пошта";
+            this.UserEmailCol.MinimumWidth = 6;
+            this.UserEmailCol.Name = "UserEmailCol";
+            this.UserEmailCol.ReadOnly = true;
+            this.UserEmailCol.Width = 150;
+            // 
+            // UserPhoneCol
+            // 
+            this.UserPhoneCol.HeaderText = "Телефон";
+            this.UserPhoneCol.MinimumWidth = 6;
+            this.UserPhoneCol.Name = "UserPhoneCol";
+            this.UserPhoneCol.ReadOnly = true;
+            this.UserPhoneCol.Width = 150;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1214, 677);
+            this.ClientSize = new System.Drawing.Size(1240, 677);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCategory);
             this.Controls.Add(this.btnEdit);
@@ -284,11 +294,6 @@
         private Button btnAdd;
         private Button btnNext;
         private Button btnPrev;
-        private DataGridViewTextBoxColumn UserIdCol;
-        private DataGridViewImageColumn UserImageCol;
-        private DataGridViewTextBoxColumn UserNameCol;
-        private DataGridViewTextBoxColumn UserEmailCol;
-        private DataGridViewTextBoxColumn UserPhoneCol;
         private Button btnEdit;
         private Button btnCategory;
         private Button btnSend;
@@ -298,5 +303,11 @@
         private Label label1;
         private TextBox txtPhone;
         private Button btnSelectFile;
+        private DataGridViewTextBoxColumn UserIdCol;
+        private DataGridViewImageColumn UserImageCol;
+        private DataGridViewTextBoxColumn UserNameCol;
+        private DataGridViewTextBoxColumn ColRoles;
+        private DataGridViewTextBoxColumn UserEmailCol;
+        private DataGridViewTextBoxColumn UserPhoneCol;
     }
 }

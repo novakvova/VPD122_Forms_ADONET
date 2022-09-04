@@ -16,5 +16,10 @@ namespace MyWinForms.Data
         [Required, StringLength(255)]
         public string Name { get; set; }
         public virtual IList<AppUserRole> AppUserRoles { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

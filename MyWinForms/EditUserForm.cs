@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using MyWinForms.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,15 +9,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace MyWinForms
 {
     public partial class EditUserForm : Form
     {
+        public int Id { get; set; }
         public string Pib { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
         public string ImagePhoto{ get; set; }
+        public List<int> RolesChecket { get; set; } = new List<int>();
+
         public EditUserForm()
         {
             InitializeComponent();
@@ -32,6 +38,12 @@ namespace MyWinForms
             this.Pib = txtName.Text;
             this.Email = txtEmail.Text;
             this.Phone = txtPhone.Text;
+            var list = clbRoles.CheckedItems;
+            foreach (var item in list)
+            {
+                var role = item as AppRole;
+                RolesChecket.Add(role.Id);
+            }
             this.DialogResult = DialogResult.OK;
         }
 
@@ -53,6 +65,18 @@ namespace MyWinForms
             txtName.Text = Pib;
             txtEmail.Text=Email;
             txtPhone.Text= Phone;
+            AppEFContext context = new AppEFContext();
+            var user = context.Users
+                .Include(x => x.AppUserRoles)
+                .SingleOrDefault(x => x.Id == Id);
+
+            foreach (var item in context.Roles)
+            {
+                bool select = false;
+                if (user.AppUserRoles.SingleOrDefault(r => r.RoleId == item.Id) != null)
+                    select = true;
+                clbRoles.Items.Add(item, select);
+            }
         }
     }
 }

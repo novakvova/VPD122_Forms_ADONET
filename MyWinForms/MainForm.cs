@@ -1,5 +1,6 @@
 using BeginApp.Abstracts;
 using BeginApp.Services;
+using Microsoft.EntityFrameworkCore;
 using MyWinForms.Data;
 using System.Drawing.Imaging;
 
@@ -20,15 +21,24 @@ namespace MyWinForms
         private void LoadList()
         {
             dgvUsers.Rows.Clear();
-            var query = _context.Users.AsQueryable(); //робимо sql запит до БД
+            var query = _context.Users
+                .Include(x=>x.AppUserRoles)
+                .ThenInclude(x=>x.Role)
+                .AsQueryable(); //робимо sql запит до БД
             var users = query
                 .Skip((currentPage - 1) * pageSize) //Кількість запитів, яку я хочу пропустить
                 .Take(pageSize) //Кільсть записів, які ми беремо із БД
                 .ToList(); //Отримуємо записи із БД
             foreach (var user in users)
             {
+                var roleData = "";
+                foreach (var role in user.AppUserRoles)
+                {
+                    roleData += role.Role.Name + "  ";
+                }
                 object[] row = { user.Id, Image.FromFile(Path.Combine("images", user.Photo)),
-                    user.Name, user.Email, user.Phone };
+                    user.Name, roleData, user.Email, user.Phone };
+
                 dgvUsers.Rows.Add(row);
             }
 
@@ -64,6 +74,16 @@ namespace MyWinForms
                 };
                 _context.Users.Add(user);
                 _context.SaveChanges();
+                foreach (var item in dlg.RolesChecket)
+                {
+                    var userRole = new AppUserRole()
+                    {
+                        RoleId = item,
+                        UserId = user.Id
+                    };
+                    _context.UserRoles.Add(userRole);
+                    _context.SaveChanges();
+                }
                 LoadList();
 
 
@@ -100,7 +120,9 @@ namespace MyWinForms
                     }
                     var index = dgvUsers.SelectedCells[0].RowIndex;
                     int id = (int)dgvUsers.Rows[index].Cells[0].Value;
-                    var user = _context.Users.SingleOrDefault(x=>x.Id==id);
+                    var user = _context.Users
+                        .Include(x=>x.AppUserRoles)
+                        .SingleOrDefault(x=>x.Id==id);
                     if (user != null)
                     {
                         string userImage = Path.Combine("images", user.Photo);
@@ -109,6 +131,7 @@ namespace MyWinForms
                         dlg.ImagePhoto = userImage;
                         dlg.Email = user.Email;
                         dlg.Phone = user.Phone;
+                        dlg.Id = user.Id;
                         if (dlg.ShowDialog() == DialogResult.OK)
                         {
                             if (dlg.ImagePhoto != userImage) //Заміняємо старе фото
@@ -123,6 +146,23 @@ namespace MyWinForms
                             user.Name=dlg.Pib;
                             //_context.Users.Update(user);
                             _context.SaveChanges();
+                            //Clear roles
+                            foreach (var userRole in user.AppUserRoles)
+                            {
+                                _context.UserRoles.Remove(userRole);
+                            }
+                            _context.SaveChanges();
+                            //Add roles
+                            foreach (var item in dlg.RolesChecket)
+                            {
+                                var userRole = new AppUserRole()
+                                {
+                                    RoleId = item,
+                                    UserId = user.Id
+                                };
+                                _context.UserRoles.Add(userRole);
+                                _context.SaveChanges();
+                            }
                             LoadList();
                         }
                     }

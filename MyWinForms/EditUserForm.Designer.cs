@@ -37,6 +37,8 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.pbImage = new System.Windows.Forms.PictureBox();
+            this.clbRoles = new System.Windows.Forms.CheckedListBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,7 +47,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 21);
+            this.label1.Size = new System.Drawing.Size(42, 28);
             this.label1.TabIndex = 0;
             this.label1.Text = "ПІБ";
             // 
@@ -53,7 +55,7 @@
             // 
             this.txtName.Location = new System.Drawing.Point(17, 49);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(450, 29);
+            this.txtName.Size = new System.Drawing.Size(450, 34);
             this.txtName.TabIndex = 1;
             // 
             // label2
@@ -61,7 +63,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 95);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 21);
+            this.label2.Size = new System.Drawing.Size(72, 28);
             this.label2.TabIndex = 0;
             this.label2.Text = "Пошта";
             // 
@@ -69,7 +71,7 @@
             // 
             this.txtEmail.Location = new System.Drawing.Point(17, 135);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(318, 29);
+            this.txtEmail.Size = new System.Drawing.Size(318, 34);
             this.txtEmail.TabIndex = 2;
             // 
             // label3
@@ -77,7 +79,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 183);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 21);
+            this.label3.Size = new System.Drawing.Size(91, 28);
             this.label3.TabIndex = 0;
             this.label3.Text = "Телефон";
             // 
@@ -85,7 +87,7 @@
             // 
             this.txtPhone.Location = new System.Drawing.Point(17, 223);
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(318, 29);
+            this.txtPhone.Size = new System.Drawing.Size(318, 34);
             this.txtPhone.TabIndex = 3;
             // 
             // btnAdd
@@ -118,11 +120,30 @@
             this.pbImage.TabStop = false;
             this.pbImage.Click += new System.EventHandler(this.pbImage_Click);
             // 
+            // clbRoles
+            // 
+            this.clbRoles.FormattingEnabled = true;
+            this.clbRoles.Location = new System.Drawing.Point(115, 283);
+            this.clbRoles.Name = "clbRoles";
+            this.clbRoles.Size = new System.Drawing.Size(150, 120);
+            this.clbRoles.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(19, 283);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(56, 28);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Роль";
+            // 
             // EditUserForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(802, 301);
+            this.ClientSize = new System.Drawing.Size(802, 432);
+            this.Controls.Add(this.clbRoles);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.pbImage);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAdd);
@@ -155,5 +176,7 @@
         private Button btnAdd;
         private Button btnCancel;
         private PictureBox pbImage;
+        private CheckedListBox clbRoles;
+        private Label label4;
     }
 }

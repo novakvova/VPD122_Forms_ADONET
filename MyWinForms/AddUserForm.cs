@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyWinForms.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,10 +17,17 @@ namespace MyWinForms
         public string Email { get; set; }
         public string Phone { get; set; }
         public string ImagePhoto{ get; set; }
+        public List<int> RolesChecket { get; set; } = new List<int>();
         public AddUserForm()
         {
             InitializeComponent();
             pbImage.Image = Image.FromFile("select.jfif");
+            AppEFContext context = new AppEFContext();
+            foreach (var item in context.Roles)
+            {
+                clbRoles.Items.Add(item);
+            }
+            
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -29,6 +37,12 @@ namespace MyWinForms
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            var list = clbRoles.CheckedItems;
+            foreach (var item in list)
+            {
+                var role = item as AppRole;
+                RolesChecket.Add(role.Id);
+            }
             this.Pib = txtName.Text;
             this.Email = txtEmail.Text;
             this.Phone = txtPhone.Text;
