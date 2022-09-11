@@ -1,3 +1,5 @@
+using WinFormsStepByStep.Data;
+
 namespace WinFormsStepByStep
 {
     internal static class Program
@@ -8,6 +10,7 @@ namespace WinFormsStepByStep
         [STAThread]
         static void Main()
         {
+            DatabaseSeeder.Seed();
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();

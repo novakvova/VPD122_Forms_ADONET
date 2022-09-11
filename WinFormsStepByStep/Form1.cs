@@ -1,3 +1,5 @@
+using WinFormsStepByStep.Data;
+
 namespace WinFormsStepByStep
 {
     public partial class Form1 : Form
@@ -5,6 +7,17 @@ namespace WinFormsStepByStep
         public Form1()
         {
             InitializeComponent();
+            try
+            {
+                MyDataContext myData = new MyDataContext();
+                var users = myData.Users.ToList();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error start app " + ex.Message);
+            }
+            
+
         }
     }
 }
