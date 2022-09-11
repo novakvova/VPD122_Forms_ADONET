@@ -20,5 +20,6 @@ namespace WinFormsStepByStep.Data.Entities
         public decimal Price { get; set; }
         [StringLength(2000)]
         public string Description { get; set; }
+        public virtual ICollection<Basket> Baskets { get; set; }
     }
 }

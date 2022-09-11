@@ -15,6 +15,7 @@ namespace WinFormsStepByStep.Data
             {
                 SeedUsers(dataContext);
                 SeedProducts(dataContext);
+                SeedBaskets(dataContext);
             }
 
         }
@@ -54,6 +55,30 @@ namespace WinFormsStepByStep.Data
                     Description = "Для крутий парнів"
                 };
                 dataContext.Products.Add(product2);
+                dataContext.SaveChanges();
+            }
+        }
+
+        private static void SeedBaskets(MyDataContext dataContext)
+        {
+            if (!dataContext.Baskets.Any())
+            {
+                var basket = new Basket()
+                {
+                    UserId=1,
+                    ProductId=2,
+                    Count=2
+                };
+                dataContext.Baskets.Add(basket);
+                dataContext.SaveChanges();
+
+                var basket2 = new Basket()
+                {
+                    UserId = 1,
+                    ProductId = 1,
+                    Count = 1
+                };
+                dataContext.Baskets.Add(basket2);
                 dataContext.SaveChanges();
             }
         }
