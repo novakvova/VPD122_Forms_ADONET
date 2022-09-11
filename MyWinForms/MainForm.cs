@@ -256,5 +256,21 @@ namespace MyWinForms
                 il.Images.Add(bmp);
             }
         }
+
+        private void btnGetDataInGrid_Click(object sender, EventArgs e)
+        {
+            foreach(var row in dgvUsers.Rows)
+            {
+                var item = row;
+                if(row is DataGridViewRow)
+                {
+                    var rowData = (DataGridViewRow)row;
+                    var cells = rowData.Cells;
+                    var cellId = cells[5] as DataGridViewCell;
+                    MessageBox.Show("Data in col [0]", cellId.Value.ToString());
+                }
+                
+            };
+        }
     }
 }

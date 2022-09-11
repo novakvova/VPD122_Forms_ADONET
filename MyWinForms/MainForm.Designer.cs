@@ -50,6 +50,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.btnGetDataInGrid = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -273,11 +274,22 @@
             this.listView1.TabIndex = 9;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
+            // btnGetDataInGrid
+            // 
+            this.btnGetDataInGrid.Location = new System.Drawing.Point(26, 125);
+            this.btnGetDataInGrid.Name = "btnGetDataInGrid";
+            this.btnGetDataInGrid.Size = new System.Drawing.Size(153, 91);
+            this.btnGetDataInGrid.TabIndex = 10;
+            this.btnGetDataInGrid.Text = "Отримати спиок із DataGridView";
+            this.btnGetDataInGrid.UseVisualStyleBackColor = true;
+            this.btnGetDataInGrid.Click += new System.EventHandler(this.btnGetDataInGrid_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1240, 677);
+            this.Controls.Add(this.btnGetDataInGrid);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCategory);
@@ -320,5 +332,6 @@
         private DataGridViewTextBoxColumn UserEmailCol;
         private DataGridViewTextBoxColumn UserPhoneCol;
         private ListView listView1;
+        private Button btnGetDataInGrid;
     }
 }
