@@ -14,6 +14,7 @@ namespace WinFormsStepByStep.Data
             using (MyDataContext dataContext = new MyDataContext())
             {
                 SeedUsers(dataContext);
+                SeedProducts(dataContext);
             }
 
         }
@@ -29,6 +30,30 @@ namespace WinFormsStepByStep.Data
                     Phone = "+380 98 89 67 786"
                 };
                 dataContext.Users.Add(user);
+                dataContext.SaveChanges();
+            }
+        }
+
+        private static void SeedProducts(MyDataContext dataContext)
+        {
+            if (!dataContext.Products.Any())
+            {
+                var product = new Product()
+                {
+                    Name="Sdd 256 Gb",
+                    Price=1200.45m,
+                    Description="Для звчайних пацанів"
+                };
+                dataContext.Products.Add(product);
+                dataContext.SaveChanges();
+
+                var product2 = new Product()
+                {
+                    Name = "DDR4 16 Gb",
+                    Price = 2245.89m,
+                    Description = "Для крутий парнів"
+                };
+                dataContext.Products.Add(product2);
                 dataContext.SaveChanges();
             }
         }
