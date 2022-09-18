@@ -11,8 +11,6 @@ namespace WinFormsStepByStep.Data.Entities
     [Table("tblBaskets")]
     public class Basket
     {
-        [Key]
-        public int Id { get; set; }
         public int Count { get; set; }
         [ForeignKey("ProductOf")]
         public int ProductId { get; set; }

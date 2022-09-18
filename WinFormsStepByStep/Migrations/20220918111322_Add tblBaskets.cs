@@ -12,15 +12,13 @@ namespace WinFormsStepByStep.Migrations
                 name: "tblBaskets",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Count = table.Column<int>(type: "int", nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false)
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    Count = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_tblBaskets", x => x.Id);
+                    table.PrimaryKey("PK_tblBaskets", x => new { x.UserId, x.ProductId });
                     table.ForeignKey(
                         name: "FK_tblBaskets_tblProducts_ProductId",
                         column: x => x.ProductId,
@@ -39,11 +37,6 @@ namespace WinFormsStepByStep.Migrations
                 name: "IX_tblBaskets_ProductId",
                 table: "tblBaskets",
                 column: "ProductId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_tblBaskets_UserId",
-                table: "tblBaskets",
-                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

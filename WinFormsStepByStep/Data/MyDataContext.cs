@@ -23,5 +23,12 @@ namespace WinFormsStepByStep.Data
             optionsBuilder.UseSqlServer(
                 "Server=kotel-banan.mssql.somee.com;Database=kotel-banan;User Id=cojij78728_SQLLogin_1;Password=idb7e5zlvh;");
         }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<Basket>(basket =>
+            {
+                basket.HasKey(b => new { b.UserId, b.ProductId });
+            });
+        }
     }
 }
