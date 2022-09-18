@@ -22,5 +22,6 @@ namespace WinFormsStepByStep.Data.Entities
         public string Description { get; set; }
         public virtual ICollection<Basket> Baskets { get; set; }
         public virtual ICollection<OrderItem> OrderItems { get; set; }
+        public virtual ICollection<ProductImage> ProductImages { get; set; }
     }
 }

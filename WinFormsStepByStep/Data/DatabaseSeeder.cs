@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 using WinFormsStepByStep.Data.Entities;
@@ -19,6 +20,7 @@ namespace WinFormsStepByStep.Data
                 SeedOrderStatuses(dataContext);
                 SeedOrders(dataContext);
                 SeedOrderItems(dataContext);
+                SeedProductImages(dataContext);
             }
 
         }
@@ -140,6 +142,30 @@ namespace WinFormsStepByStep.Data
                     PriceBuy = 2245.89m
                 };
                 dataContext.OrderItems.Add(orderItem2);
+                dataContext.SaveChanges();
+            }
+        }
+
+        private static void SeedProductImages(MyDataContext dataContext)
+        {
+            if (!dataContext.ProductImages.Any())
+            {
+                var productImage = new ProductImage
+                {
+                    Name="1.jpg",
+                    ProductId = 1,
+                    Priority=1
+                };
+                dataContext.ProductImages.Add(productImage);
+                dataContext.SaveChanges();
+
+                var productImage2 = new ProductImage
+                {
+                    Name = "2.jpg",
+                    ProductId = 1,
+                    Priority = 2
+                };
+                dataContext.ProductImages.Add(productImage2);
                 dataContext.SaveChanges();
             }
         }
