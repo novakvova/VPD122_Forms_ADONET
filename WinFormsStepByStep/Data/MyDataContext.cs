@@ -18,6 +18,8 @@ namespace WinFormsStepByStep.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Basket> Baskets { get; set; }
         public DbSet<OrderStatus> OrderStatuses { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        
 
         protected override void OnConfiguring(DbContextOptionsBuilder  optionsBuilder)
         {

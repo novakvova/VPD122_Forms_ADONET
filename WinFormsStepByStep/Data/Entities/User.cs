@@ -22,5 +22,6 @@ namespace WinFormsStepByStep.Data.Entities
         [StringLength(255)]
         public string Email { get; set; }
         public virtual ICollection<Basket> Baskets { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

@@ -17,6 +17,7 @@ namespace WinFormsStepByStep.Data
                 SeedProducts(dataContext);
                 SeedBaskets(dataContext);
                 SeedOrderStatuses(dataContext);
+                SeedOrders(dataContext);
             }
 
         }
@@ -99,6 +100,21 @@ namespace WinFormsStepByStep.Data
                     dataContext.OrderStatuses.Add(status);
                     dataContext.SaveChanges();
                 }
+            }
+        }
+
+        private static void SeedOrders(MyDataContext dataContext)
+        {
+            if (!dataContext.Orders.Any())
+            {
+                var order = new Order
+                {
+                    StatusId = 1,
+                    DateCreated = DateTime.Now,
+                    UserId = 1
+                };
+                dataContext.Orders.Add(order);
+                dataContext.SaveChanges();
             }
         }
 
