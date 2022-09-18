@@ -16,6 +16,7 @@ namespace WinFormsStepByStep.Data
                 SeedUsers(dataContext);
                 SeedProducts(dataContext);
                 SeedBaskets(dataContext);
+                SeedOrderStatuses(dataContext);
             }
 
         }
@@ -80,6 +81,24 @@ namespace WinFormsStepByStep.Data
                 };
                 dataContext.Baskets.Add(basket2);
                 dataContext.SaveChanges();
+            }
+        }
+
+        private static void SeedOrderStatuses(MyDataContext dataContext)
+        {
+            if (!dataContext.OrderStatuses.Any())
+            {
+                string[] statuses = { "Новий заказ", "Оброблено автоматично", 
+                    "Виконано", "Прибув у віділення", "Скасовано" };
+                foreach (var item in statuses)
+                {
+                    OrderStatus status = new OrderStatus
+                    {
+                        Name = item
+                    };
+                    dataContext.OrderStatuses.Add(status);
+                    dataContext.SaveChanges();
+                }
             }
         }
 
