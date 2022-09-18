@@ -18,6 +18,7 @@ namespace WinFormsStepByStep.Data
                 SeedBaskets(dataContext);
                 SeedOrderStatuses(dataContext);
                 SeedOrders(dataContext);
+                SeedOrderItems(dataContext);
             }
 
         }
@@ -114,6 +115,31 @@ namespace WinFormsStepByStep.Data
                     UserId = 1
                 };
                 dataContext.Orders.Add(order);
+                dataContext.SaveChanges();
+            }
+        }
+        private static void SeedOrderItems(MyDataContext dataContext)
+        {
+            if (!dataContext.OrderItems.Any())
+            {
+                var orderItem = new OrderItem
+                {
+                    OrderId=1,
+                    Count=2,
+                    ProductId=1,
+                    PriceBuy= 1150.45m
+                };
+                dataContext.OrderItems.Add(orderItem);
+                dataContext.SaveChanges();
+
+                var orderItem2 = new OrderItem
+                {
+                    OrderId = 1,
+                    Count = 1,
+                    ProductId = 2,
+                    PriceBuy = 2245.89m
+                };
+                dataContext.OrderItems.Add(orderItem2);
                 dataContext.SaveChanges();
             }
         }
