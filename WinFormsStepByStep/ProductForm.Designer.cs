@@ -31,10 +31,12 @@
             this.lvProducts = new System.Windows.Forms.ListView();
             this.label1 = new System.Windows.Forms.Label();
             this.btnProductInfo = new System.Windows.Forms.Button();
+            this.btnAddProduct = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lvProducts
             // 
+            this.lvProducts.AllowDrop = true;
             this.lvProducts.Location = new System.Drawing.Point(10, 62);
             this.lvProducts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lvProducts.MultiSelect = false;
@@ -42,14 +44,11 @@
             this.lvProducts.Size = new System.Drawing.Size(806, 338);
             this.lvProducts.TabIndex = 0;
             this.lvProducts.UseCompatibleStateImageBehavior = false;
-            this.lvProducts.ListViewItemSorter = new ListViewIndexComparer();
-            this.lvProducts.InsertionMark.Color = Color.Green;
-            this.lvProducts.AllowDrop = true;
-            this.lvProducts.ItemDrag += new ItemDragEventHandler(lvProducts_ItemDrag);
-            this.lvProducts.DragEnter += new DragEventHandler(lvProducts_DragEnter);
-            this.lvProducts.DragOver += new DragEventHandler(lvProducts_DragOver);
-            this.lvProducts.DragLeave += new EventHandler(lvProducts_DragLeave);
-            this.lvProducts.DragDrop += new DragEventHandler(lvProducts_DragDrop);
+            this.lvProducts.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.lvProducts_ItemDrag);
+            this.lvProducts.DragDrop += new System.Windows.Forms.DragEventHandler(this.lvProducts_DragDrop);
+            this.lvProducts.DragEnter += new System.Windows.Forms.DragEventHandler(this.lvProducts_DragEnter);
+            this.lvProducts.DragOver += new System.Windows.Forms.DragEventHandler(this.lvProducts_DragOver);
+            this.lvProducts.DragLeave += new System.EventHandler(this.lvProducts_DragLeave);
             this.lvProducts.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lvProducts_MouseDoubleClick);
             // 
             // label1
@@ -73,11 +72,22 @@
             this.btnProductInfo.UseVisualStyleBackColor = true;
             this.btnProductInfo.Click += new System.EventHandler(this.btnProductInfo_Click);
             // 
+            // btnAddProduct
+            // 
+            this.btnAddProduct.Location = new System.Drawing.Point(485, 16);
+            this.btnAddProduct.Name = "btnAddProduct";
+            this.btnAddProduct.Size = new System.Drawing.Size(101, 36);
+            this.btnAddProduct.TabIndex = 3;
+            this.btnAddProduct.Text = "Додати товар";
+            this.btnAddProduct.UseVisualStyleBackColor = true;
+            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
+            // 
             // ProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(826, 418);
+            this.Controls.Add(this.btnAddProduct);
             this.Controls.Add(this.btnProductInfo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lvProducts);
@@ -99,5 +109,6 @@
         private ListView lvProducts;
         private Label label1;
         private Button btnProductInfo;
+        private Button btnAddProduct;
     }
 }

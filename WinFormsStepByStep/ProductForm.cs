@@ -172,7 +172,13 @@ namespace WinFormsStepByStep
             lvProducts.Items.Remove(draggedItem);
         }
 
-
-
+        private void btnAddProduct_Click(object sender, EventArgs e)
+        {
+            AddProductForm dlg = new AddProductForm();
+            if(dlg.ShowDialog()==DialogResult.OK)
+            {
+                MessageBox.Show("«бер≥гаЇмо товар");
+            }
+        }
     }
 }
