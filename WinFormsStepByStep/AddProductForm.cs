@@ -129,5 +129,11 @@ namespace WinFormsStepByStep
             // Remove the original copy of the dragged item.
             lvImages.Items.Remove(draggedItem);
         }
+
+        private void btnAddProduct_Click(object sender, EventArgs e)
+        {
+
+            this.DialogResult = DialogResult.OK;
+        }
     }
 }
