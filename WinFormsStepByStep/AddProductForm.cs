@@ -13,6 +13,11 @@ namespace WinFormsStepByStep
 {
     public partial class AddProductForm : Form
     {
+        public string Product_Name { get; set; }
+        public string Product_Price { get; set; }
+        public string Product_Description {  get; set; }
+        public List<string> Product_Images { get; set; } = new List<string>();
+
         private class ListViewIndexComparer : System.Collections.IComparer
         {
             public int Compare(object x, object y)
@@ -132,6 +137,13 @@ namespace WinFormsStepByStep
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
+            Product_Name = txtName.Text;
+            Product_Description=txtDescription.Text;
+            Product_Price = txtPrice.Text;
+            foreach (ListViewItem item in lvImages.Items)
+            {
+                Product_Images.Add((string)item.Tag);
+            }
 
             this.DialogResult = DialogResult.OK;
         }

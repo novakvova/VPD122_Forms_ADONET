@@ -87,6 +87,7 @@ namespace WinFormsStepByStep
             }
         }
 
+        #region Drog and Drop ListView
 
         // Starts the drag-and-drop operation when an item is dragged.
         private void lvProducts_ItemDrag(object sender, ItemDragEventArgs e)
@@ -172,6 +173,8 @@ namespace WinFormsStepByStep
             lvProducts.Items.Remove(draggedItem);
         }
 
+        #endregion
+        
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
             AddProductForm dlg = new AddProductForm();

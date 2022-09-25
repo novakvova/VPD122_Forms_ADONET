@@ -35,7 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtPrice = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.btnAddProduct = new System.Windows.Forms.Button();
@@ -117,13 +117,13 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Ціна";
             // 
-            // textBox1
+            // txtPrice
             // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(566, 87);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(191, 29);
-            this.textBox1.TabIndex = 4;
+            this.txtPrice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtPrice.Location = new System.Drawing.Point(566, 87);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(191, 29);
+            this.txtPrice.TabIndex = 4;
             // 
             // label4
             // 
@@ -161,7 +161,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(769, 436);
             this.Controls.Add(this.btnAddProduct);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtPrice);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.label4);
@@ -186,7 +186,7 @@
         private Label label2;
         private TextBox txtName;
         private Label label3;
-        private TextBox textBox1;
+        private TextBox txtPrice;
         private Label label4;
         private TextBox txtDescription;
         private Button btnAddProduct;
