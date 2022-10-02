@@ -13,12 +13,18 @@ using Image = System.Drawing.Image;
 
 namespace WinFormsStepByStep
 {
+    public class ImageItemListView
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
+
     public partial class EditProductForm : Form
     {
         public string Product_Name { get; set; }
         public string Product_Price { get; set; }
         public string Product_Description {  get; set; }
-        public List<string> Product_Images { get; set; } = new List<string>();
+        public List<ImageItemListView> Product_Images { get; set; } = new List<ImageItemListView>();
 
         private class ListViewIndexComparer : System.Collections.IComparer
         {
@@ -45,14 +51,14 @@ namespace WinFormsStepByStep
             txtName.Text = Product_Name;
             txtDescription.Text=Product_Description;
             txtPrice.Text=Product_Price;
-            foreach (string image in Product_Images)
+            foreach (var image in Product_Images)
             {
-                string key = image;
+                string key = image.Name;
                 ListViewItem item = new ListViewItem();
                 item.Tag = image;
-                item.Text = Path.GetFileName($"{image}");
+                item.Text = Path.GetFileName($"{image.Name}");
                 item.ImageKey = key;
-                lvImages.LargeImageList.Images.Add(key, Image.FromFile($"images//{image}"));
+                lvImages.LargeImageList.Images.Add(key, Image.FromFile($"images//{image.Name}"));
                 lvImages.Items.Add(item);
             }
         }
@@ -65,7 +71,11 @@ namespace WinFormsStepByStep
             {
                 string key = Guid.NewGuid().ToString();
                 ListViewItem item = new ListViewItem();
-                item.Tag = dlg.FileName;
+                item.Tag = new ImageItemListView
+                {
+                    Id=0,
+                    Name= dlg.FileName
+                };
                 item.Text = Path.GetFileName(dlg.FileName);
                 item.ImageKey = key;
                 lvImages.LargeImageList.Images.Add(key, Image.FromFile(dlg.FileName));
@@ -161,7 +171,7 @@ namespace WinFormsStepByStep
             Product_Price = txtPrice.Text;
             foreach (ListViewItem item in lvImages.Items)
             {
-                Product_Images.Add((string)item.Tag);
+                Product_Images.Add((ImageItemListView)item.Tag);
             }
 
             this.DialogResult = DialogResult.OK;

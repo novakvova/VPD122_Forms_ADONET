@@ -87,10 +87,14 @@ namespace WinFormsStepByStep
                     dlg.Product_Name = p.Name;
                     dlg.Product_Price = p.Price.ToString();
                     dlg.Product_Description = p.Description;
-                    dlg.Product_Images = new List<string>();
+                    dlg.Product_Images = new List<ImageItemListView>();
                     foreach(var image in p.ProductImages)
                     {
-                        dlg.Product_Images.Add(image.Name);
+                        dlg.Product_Images.Add(new ImageItemListView
+                        {
+                            Id = image.Id,
+                            Name=image.Name
+                        });
                     }
                     if(dlg.ShowDialog() == DialogResult.OK)
                     {
