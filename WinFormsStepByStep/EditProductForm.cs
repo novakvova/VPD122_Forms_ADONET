@@ -21,6 +21,7 @@ namespace WinFormsStepByStep
         public string Product_Name { get; set; }
         public string Product_Price { get; set; }
         public string Product_Description {  get; set; }
+        public List<ImageItemListView> RemoveFiles { get; set; } = new List<ImageItemListView>();
         public List<ImageItemListView> Product_Images { get; set; } = new List<ImageItemListView>();
 
         private class ListViewIndexComparer : System.Collections.IComparer
@@ -55,7 +56,10 @@ namespace WinFormsStepByStep
                 item.Tag = image;
                 item.Text = Path.GetFileName($"{image.Name}");
                 item.ImageKey = key;
-                lvImages.LargeImageList.Images.Add(key, Image.FromFile($"images//{image.Name}"));
+                MemoryStream ms = new MemoryStream();
+                using (FileStream file = new FileStream($"images/{image.Name}", FileMode.Open, FileAccess.Read))
+                    file.CopyTo(ms);
+                lvImages.LargeImageList.Images.Add(key, Image.FromStream(ms));
                 lvImages.Items.Add(item);
             }
         }
@@ -187,6 +191,10 @@ namespace WinFormsStepByStep
             {
                 var item = listSelect[0];
                 var pImage = (ImageItemListView)item.Tag;
+                if(pImage.Id>0)
+                {
+                    RemoveFiles.Add(pImage);
+                }
                 lvImages.Items.Remove(item);
             }
         }

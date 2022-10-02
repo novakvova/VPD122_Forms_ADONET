@@ -48,8 +48,12 @@ namespace WinFormsStepByStep
                         image = pImage.Name;
                         id = pImage.Id.ToString();
                     }
+                    MemoryStream ms = new MemoryStream();
+                    using (FileStream file = new FileStream($"images/{image}", FileMode.Open, FileAccess.Read))
+                        file.CopyTo(ms);
+
                     lvProducts.LargeImageList.Images.Add(id,
-                        Image.FromFile($"images/{image}"));
+                        Image.FromStream(ms));
                     ListViewItem item = new ListViewItem();
                     item.Tag = p;
                     item.Text = $"{p.Name}\r\n{p.Price}";
@@ -106,6 +110,11 @@ namespace WinFormsStepByStep
                         {
                             myData.ProductImages.Remove(pImgDel);
                             myData.SaveChanges();
+                        }
+
+                        foreach (var pImgDel in dlg.RemoveFiles)
+                        {
+                            File.Delete(@$"images\{pImgDel.Name}");
                         }
 
                         int i = 1;
