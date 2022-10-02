@@ -26,9 +26,6 @@ namespace WinFormsStepByStep
         {
             InitializeComponent();
             LoadProductListView();
-
-
-
         }
 
         private void LoadProductListView()
@@ -88,7 +85,7 @@ namespace WinFormsStepByStep
                     dlg.Product_Price = p.Price.ToString();
                     dlg.Product_Description = p.Description;
                     dlg.Product_Images = new List<ImageItemListView>();
-                    foreach(var image in p.ProductImages)
+                    foreach(var image in p.ProductImages.OrderBy(i=>i.Priority))
                     {
                         dlg.Product_Images.Add(new ImageItemListView
                         {
@@ -98,7 +95,47 @@ namespace WinFormsStepByStep
                     }
                     if(dlg.ShowDialog() == DialogResult.OK)
                     {
-                        //Редагуємо товар
+                        p.Name = dlg.Product_Name;
+                        p.Price = decimal.Parse(dlg.Product_Price);
+                        p.Description = dlg.Product_Description;
+
+                        myData.Products.Update(p);
+                        myData.SaveChanges();
+
+                        foreach (var pImgDel in p.ProductImages)
+                        {
+                            myData.ProductImages.Remove(pImgDel);
+                            myData.SaveChanges();
+                        }
+
+                        int i = 1;
+                        foreach (var newImage in dlg.Product_Images)
+                        {
+                            string imageName = Path.GetRandomFileName() + ".jpg";
+                            if (newImage.Id==0)
+                            {
+                                string dir = "images";
+                                if (!Directory.Exists(dir))
+                                    Directory.CreateDirectory(dir);
+                                Bitmap bitmap = new Bitmap(newImage.Name);
+                                bitmap.Save(Path.Combine(dir, imageName), ImageFormat.Jpeg);
+                            }
+                            else
+                            {
+                                imageName = newImage.Name;
+                            }
+                            
+                            var pi = new ProductImage
+                            {
+                                Name = imageName,
+                                ProductId = p.Id,
+                                Priority = i
+                            };
+                            i++;
+                            myData.ProductImages.Add(pi);
+                            myData.SaveChanges();
+                        }
+                        LoadProductListView();
                     }
                 }
                 //MessageBox.Show("Product info: " + pImage.Id.ToString());

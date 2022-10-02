@@ -169,6 +169,7 @@ namespace WinFormsStepByStep
             Product_Name = txtName.Text;
             Product_Description=txtDescription.Text;
             Product_Price = txtPrice.Text;
+            Product_Images.Clear();
             foreach (ListViewItem item in lvImages.Items)
             {
                 Product_Images.Add((ImageItemListView)item.Tag);
