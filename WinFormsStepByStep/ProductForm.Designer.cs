@@ -64,11 +64,11 @@
             // 
             // btnProductInfo
             // 
-            this.btnProductInfo.Location = new System.Drawing.Point(641, 12);
+            this.btnProductInfo.Location = new System.Drawing.Point(680, 16);
             this.btnProductInfo.Name = "btnProductInfo";
-            this.btnProductInfo.Size = new System.Drawing.Size(173, 44);
+            this.btnProductInfo.Size = new System.Drawing.Size(134, 36);
             this.btnProductInfo.TabIndex = 2;
-            this.btnProductInfo.Text = "Інформація про товар";
+            this.btnProductInfo.Text = "Змінити товар";
             this.btnProductInfo.UseVisualStyleBackColor = true;
             this.btnProductInfo.Click += new System.EventHandler(this.btnProductInfo_Click);
             // 

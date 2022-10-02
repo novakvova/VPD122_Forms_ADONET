@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
 using Microsoft.VisualBasic.Devices;
 using System.Drawing.Imaging;
+using System.Security.Cryptography.Pkcs;
 using System.Xml.Linq;
 using WinFormsStepByStep.Data;
 using WinFormsStepByStep.Data.Entities;
@@ -77,7 +78,26 @@ namespace WinFormsStepByStep
             {
                 var item = listSelect[0];
                 var pImage = (Product)item.Tag;
-                MessageBox.Show("Product info: " + pImage.Id.ToString());
+                var p = myData.Products
+                    .Include(x=>x.ProductImages)
+                    .SingleOrDefault(x => x.Id == pImage.Id);
+                if(p!=null)
+                {
+                    EditProductForm dlg = new EditProductForm();
+                    dlg.Product_Name = p.Name;
+                    dlg.Product_Price = p.Price.ToString();
+                    dlg.Product_Description = p.Description;
+                    dlg.Product_Images = new List<string>();
+                    foreach(var image in p.ProductImages)
+                    {
+                        dlg.Product_Images.Add(image.Name);
+                    }
+                    if(dlg.ShowDialog() == DialogResult.OK)
+                    {
+                        //Редагуємо товар
+                    }
+                }
+                //MessageBox.Show("Product info: " + pImage.Id.ToString());
             }
             else
             {

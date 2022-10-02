@@ -21,6 +21,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="EditProductForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="images\1.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
