@@ -31,6 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lvImages = new System.Windows.Forms.ListView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.btnAddImage = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -68,6 +69,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Controls.Add(this.btnAddImage);
             this.groupBox1.Controls.Add(this.lvImages);
             this.groupBox1.Location = new System.Drawing.Point(12, 213);
@@ -76,6 +78,16 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Фото товара";
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(651, 164);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(82, 32);
+            this.btnDelete.TabIndex = 3;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnAddImage
             // 
@@ -151,7 +163,7 @@
             this.btnAddProduct.Name = "btnAddProduct";
             this.btnAddProduct.Size = new System.Drawing.Size(164, 36);
             this.btnAddProduct.TabIndex = 5;
-            this.btnAddProduct.Text = "Додати товар";
+            this.btnAddProduct.Text = "Зберегти зміни";
             this.btnAddProduct.UseVisualStyleBackColor = true;
             this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
             // 
@@ -191,5 +203,6 @@
         private Label label4;
         private TextBox txtDescription;
         private Button btnAddProduct;
+        private Button btnDelete;
     }
 }

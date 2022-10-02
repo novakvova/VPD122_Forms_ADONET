@@ -7,17 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormsStepByStep.Data.Entities;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Image = System.Drawing.Image;
 
 namespace WinFormsStepByStep
 {
-    public class ImageItemListView
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-    }
+   
 
     public partial class EditProductForm : Form
     {
@@ -181,6 +178,17 @@ namespace WinFormsStepByStep
         private void EditProductForm_Load(object sender, EventArgs e)
         {
             InitInputForm();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            var listSelect = lvImages.SelectedItems;
+            if (listSelect.Count > 0)
+            {
+                var item = listSelect[0];
+                var pImage = (ImageItemListView)item.Tag;
+                lvImages.Items.Remove(item);
+            }
         }
     }
 }
