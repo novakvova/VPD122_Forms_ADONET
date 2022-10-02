@@ -26,8 +26,10 @@ namespace WinFormsStepByStep.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder  optionsBuilder)
         {
+            //optionsBuilder.UseSqlServer(
+            //    "Server=kotel-banan.mssql.somee.com;Database=kotel-banan;User Id=cojij78728_SQLLogin_1;Password=idb7e5zlvh;");
             optionsBuilder.UseSqlServer(
-                "Server=kotel-banan.mssql.somee.com;Database=kotel-banan;User Id=cojij78728_SQLLogin_1;Password=idb7e5zlvh;");
+                "Server=.;Database=kotel-banan;Integrated Security=True;");
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {

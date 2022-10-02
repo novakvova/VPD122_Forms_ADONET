@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
 using Microsoft.VisualBasic.Devices;
+using System.Drawing.Imaging;
+using System.Xml.Linq;
 using WinFormsStepByStep.Data;
 using WinFormsStepByStep.Data.Entities;
 
@@ -22,13 +24,22 @@ namespace WinFormsStepByStep
         public ProductForm()
         {
             InitializeComponent();
+            LoadProductListView();
+
+
+
+        }
+
+        private void LoadProductListView()
+        {
             try
             {
-                lvProducts.LargeImageList=new ImageList();
+                lvProducts.Clear();
+                lvProducts.LargeImageList = new ImageList();
                 lvProducts.LargeImageList.ImageSize = new Size(64, 64);
 
                 foreach (var p in myData.Products
-                    .Include(x=>x.ProductImages)
+                    .Include(x => x.ProductImages)
                     .ToList())
                 {
                     var pImage = p.ProductImages.OrderBy(x => x.Priority).FirstOrDefault();
@@ -53,12 +64,10 @@ namespace WinFormsStepByStep
                 //
                 //var products = myData.Products.ToList();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Error start app " + ex.Message);
             }
-            
-
         }
 
         private void btnProductInfo_Click(object sender, EventArgs e)
@@ -180,7 +189,34 @@ namespace WinFormsStepByStep
             AddProductForm dlg = new AddProductForm();
             if(dlg.ShowDialog()==DialogResult.OK)
             {
-                MessageBox.Show("«бер≥гаЇмо товар");
+                Product p = new Product();
+                p.Name = dlg.Product_Name;
+                p.Price = decimal.Parse(dlg.Product_Price);
+                p.Description = dlg.Product_Description;
+
+                myData.Products.Add(p);
+                myData.SaveChanges();
+                int i = 1;
+                foreach (var item in dlg.Product_Images)
+                {
+                    string dir = "images";
+                    if (!Directory.Exists(dir))
+                        Directory.CreateDirectory(dir);
+                    Bitmap bitmap = new Bitmap(item);
+                    string imageName = Path.GetRandomFileName() + ".jpg";
+                    bitmap.Save(Path.Combine(dir, imageName), ImageFormat.Jpeg);
+                    var pi = new ProductImage
+                    {
+                        Name = imageName,
+                        ProductId = p.Id,
+                        Priority = i
+                    };
+                    i++;
+                    myData.ProductImages.Add(pi);
+                    myData.SaveChanges();
+                }
+
+                LoadProductListView();
             }
         }
     }
